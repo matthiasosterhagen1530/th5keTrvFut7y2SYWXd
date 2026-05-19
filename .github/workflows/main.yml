@@ -1,20 +1,58 @@
-name: programmingwithkumaresan
+name: Windows - Litemanager
 
 on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: Start Building...
+  rdp:
     runs-on: windows-latest
+    timeout-minutes: 10080  # 7 روز
+
     steps:
-      - name: Downloading & Installing Essentials
+      - uses: actions/checkout@v4
+
+      - name: Download & Install LiteManager
         run: |
-          Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/qdyd4p9t6xoabl95n5o3g/Downloads.bat?rlkey=snr74vv1vr8k5suujugvrhjtm&dl=1" -OutFile "Downloads.bat"
-          cmd /c Downloads.bat
+          Invoke-WebRequest -Uri "https://www.litemanager.com/download/litemanager.zip" -OutFile "$env:TEMP\litemanager.zip"
+          Expand-Archive -Path "$env:TEMP\litemanager.zip" -DestinationPath "$env:ProgramFiles\LiteManager" -Force
 
-      - name: Log In To AnyDesk
-        run: cmd /c show.bat
+          # نصب silent
+          Start-Process "$env:ProgramFiles\LiteManager\Server\setup.exe" -ArgumentList "/verysilent" -Wait
+          Start-Sleep -Seconds 10
 
-      - name: Time Counter
-        run: python time.py
+      - name: Set Fixed Password & Start Server
+        run: |
+          $serverPath = "$env:ProgramFiles\LiteManager\Server\ROMServer.exe"
+          
+          # تنظیم پسورد ثابت (توصیه می‌کنم قوی باشه)
+          & $serverPath /PASSWORD:MyStrongPass123! /silentinstall
+          
+          # شروع سرویس
+          & $serverPath /start
+          
+          Start-Sleep -Seconds 8
+
+      - name: 🔴 Connection Information
+        run: |
+          Write-Host "==========================================" -ForegroundColor Green
+          Write-Host "✅ LiteManager Installed Successfully!" -ForegroundColor Green
+          Write-Host "🔑 Password: MyStrongPass123!" -ForegroundColor Yellow
+          Write-Host "==========================================" -ForegroundColor Green
+          Write-Host ""
+          Write-Host "ID رو از لاگ زیر پیدا کن (معمولاً 8-10 رقمی):" -ForegroundColor Cyan
+          Write-Host ""
+
+          # نمایش ID از فایل‌های کانفیگ یا لاگ
+          Get-ChildItem "$env:ProgramFiles\LiteManager" -Recurse -Filter "*id*" -ErrorAction SilentlyContinue | 
+            Select-Object FullName | Out-Host
+          
+          # لاگ‌های احتمالی
+          Get-Content "$env:ProgramData\LiteManager\*.log" -ErrorAction SilentlyContinue | Select-Object -Last 30 | Out-Host
+
+      - name: Keep Session Alive
+        run: |
+          Write-Host "GitHub Runner is running with LiteManager..." -ForegroundColor Green
+          while ($true) {
+            Start-Sleep -Seconds 300
+            Write-Host "$(Get-Date) - Session is alive"
+          }
