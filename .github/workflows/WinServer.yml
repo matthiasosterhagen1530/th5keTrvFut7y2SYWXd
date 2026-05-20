@@ -1,4 +1,4 @@
-name: RDP
+name: WinServer_RDP
 on:
   workflow_dispatch:
 
