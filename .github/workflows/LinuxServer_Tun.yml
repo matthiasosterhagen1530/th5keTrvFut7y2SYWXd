@@ -36,19 +36,12 @@ jobs:
           USER_NAME: "Morteza_Config"
         run: |
           TEXT=$(cat ./out.txt | sed 's/"/\\"/g' | tr -d '\r')      
-          PERSIAN_DATE=$(python3 -c '
-          import datetime
-          import jdatetime
-          now = datetime.datetime.now()
-          jalali = jdatetime.date.fromgregorian(date=now.date())
-          print(jalali.strftime("%Y/%m/%d") + " " + now.strftime("%H:%M:%S"))
-          ' 2>/dev/null || echo "Date Create:")
-          
+          CURRENT_TIME=$(date "+%Y/%m/%d %H:%M:%S")          
           curl -X POST "https://tapi.bale.ai/${TOKEN}/sendMessage" \
             -H "Content-Type: application/json" \
             -d '{
               "chat_id": "'"${CHAT_ID}"'",
-              "text": "'"${USER_NAME}"'\n'"${TEXT}"'\n\n🕒 '"${PERSIAN_DATE}"'"
+              "text": "'"${USER_NAME}"'\n'"${TEXT}"'\n\n🕒 '"${CURRENT_TIME}"'"
             }'
 
       - name: Keep alive
