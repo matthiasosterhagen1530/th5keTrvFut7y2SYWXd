@@ -1,5 +1,8 @@
-name: Auto Restart Tunnel
+name: Auto Restart Worker
 
+permissions:
+  actions: write
+  
 on:
   schedule:
     - cron: '50 */5 * * *'     # هر ۵ ساعت و ۵۰ دقیقه یکبار
