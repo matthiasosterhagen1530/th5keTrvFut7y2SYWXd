@@ -5,7 +5,7 @@ permissions:
   
 on:
   schedule:
-    - cron: '50 */5 * * *'     # هر ۵ ساعت و ۵۰ دقیقه یکبار
+    - cron: '*/10 * * * *'     # هر ۵ ساعت و ۵۰ دقیقه یکبار
 
   workflow_dispatch:           # برای تست دستی
 
