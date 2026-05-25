@@ -28,14 +28,28 @@ jobs:
       - name: Wait for out.txt and display content
         run: |
           echo "ZWNobyAiV2FpdGluZyBmb3Igb3V0LnR4dCB0byBoYXZlIGNvbnRlbnQuLi4iCgpmb3IgaSBpbiB7MS4uMzYwfTsgZG8KICBpZiBbIC1zIC4vb3V0LnR4dCBdOyB0aGVuCiAgICBlY2hvICI9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSIKICAgIGVjaG8gIuKchSBvdXQudHh0IGlzIHJlYWR5ISBDb250ZW50OiIKICAgIGVjaG8gIj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09IgogICAgY2F0IC4vb3V0LnR4dAogICAgZWNobyAiPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0iCiAgICBlY2hvICLinIUgU3VjY2Vzc2Z1bGx5IGRpc3BsYXllZCB0aGUgY29udGVudC4iCiAgICBicmVhawogIGVsc2UKICAgIGVjaG8gIlskaS8zNjBdIFN0aWxsIHdhaXRpbmcuLi4gKDEwIHNlY29uZHMgcGFzc2VkKSIKICAgIHNsZWVwIDEwCiAgZmkKZG9uZQoKaWYgWyAhIC1zIC4vb3V0LnR4dCBdOyB0aGVuCiAgZWNobyAi4pqg77iPIFRpbWVvdXQgcmVhY2hlZCBhZnRlciA2MCBtaW51dGVzLiBvdXQudHh0IGlzIHN0aWxsIGVtcHR5LiIKICBlY2hvICJDaGVjayBjcmVhdG9yLmxvZyBmb3IgbW9yZSBkZXRhaWxzOiIKICBjYXQgY3JlYXRvci5sb2cKICBleGl0IDEKZmk=" | base64 -d | bash
-      
+            
       - name: Send message to Bale Group
         env:
           TOKEN: "1076637420:eGO9F9RO7kM27YetwEGIFyR316Bj0dERp9A"
           CHAT_ID: 5812315610
           USER_NAME: "Morteza_Config"
         run: |
-          echo "VEVYVD0kKGNhdCAuL291dC50eHQgfCBzZWQgJ3MvIi9cXCIvZycgfCB0ciAtZCAnXHInKQoKY3VybCAtWCBQT1NUICJodHRwczovL3RhcGkuYmFsZS5haS8ke1RPS0VOfS9zZW5kTWVzc2FnZSIgXAogIC1IICJDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24iIFwKICAtZCAnewogICAgImNoYXRfaWQiOiAiJyIke0NIQVRfSUR9IiciLAogICAgInRleHQiOiAiJyIke1VTRVJfTkFNRX0iJ1xuJyIke1RFWFR9IiciCiAgfScK" | base64 -d | bash
+          TEXT=$(cat ./out.txt | sed 's/"/\\"/g' | tr -d '\r')      
+          PERSIAN_DATE=$(python3 -c '
+          import datetime
+          import jdatetime
+          now = datetime.datetime.now()
+          jalali = jdatetime.date.fromgregorian(date=now.date())
+          print(jalali.strftime("%Y/%m/%d") + " " + now.strftime("%H:%M:%S"))
+          ' 2>/dev/null || echo "Date Create:")
+          
+          curl -X POST "https://tapi.bale.ai/${TOKEN}/sendMessage" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "chat_id": "'"${CHAT_ID}"'",
+              "text": "'"${USER_NAME}"'\n'"${TEXT}"'\n\n🕒 '"${PERSIAN_DATE}"'"
+            }'
 
       - name: Keep alive
         run: tail -f /dev/null
