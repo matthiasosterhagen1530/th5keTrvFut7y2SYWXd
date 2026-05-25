@@ -7,9 +7,6 @@ on:
   schedule:
     - cron: '*/15 * * * *'     # هر ۵ ساعت و ۵۰ دقیقه یکبار
 
-  push:
-  workflow_dispatch:           # برای تست دستی
-
 jobs:
   restart:
     runs-on: ubuntu-latest
