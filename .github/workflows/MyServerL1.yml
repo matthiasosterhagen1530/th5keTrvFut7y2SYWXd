@@ -44,14 +44,14 @@ jobs:
       - name: Start Panel Tunnel
         run: |
           echo "d2dldCBodHRwczovL2dpdGh1Yi5jb20vY2xvdWRmbGFyZS9jbG91ZGZsYXJlZC9yZWxlYXNlcy9sYXRlc3QvZG93bmxvYWQvY2xvdWRmbGFyZWQtbGludXgtYW1kNjQgLU8gcGFuZWx0dW5uZWwtcnVubmVyCmNwIHBhbmVsdHVubmVsLXJ1bm5lciBjb25maWd0dW5uZWwtcnVubmVyCnN1ZG8gY2htb2QgK3ggcGFuZWx0dW5uZWwtcnVubmVyCnN1ZG8gY2htb2QgK3ggY29uZmlndHVubmVsLXJ1bm5lcgpub2h1cCAuL3BhbmVsdHVubmVsLXJ1bm5lciB0dW5uZWwgLS11cmwgaHR0cDovL2xvY2FsaG9zdDoyMDUzIC0tbm8tdGxzLXZlcmlmeSAtLW5vLWF1dG91cGRhdGUgLS1lZGdlLWlwLXZlcnNpb24gYXV0byAtLXByb3RvY29sIGh0dHAyID4gcGFuZWx0dW5uZWwubG9nIDI+JjEgJiAgICAgCmZvciBpIGluIHsxLi4xOH07IGRvCmVjaG8gIkZvdW5kIENyZWF0ZWQgVHVubmVsIC0gVHJheSAkaSAuLi4iClRVTk5FTF9VUkw9JChncmVwIC1vICdodHRwczovL1teIF0qXC50cnljbG91ZGZsYXJlXC5jb20nIHBhbmVsdHVubmVsLmxvZyB8IHRhaWwgLW4gMSkKCmlmIFsgLW4gIiRUVU5ORUxfVVJMIiBdOyB0aGVuCiBlY2hvICLinIUgUGFuZWwgVHVubmVsIENyZWF0ZWQhIgogZWNobyAiUGFuZWxUdW5uZWwgQWRkcmVzczogJFRVTk5FTF9VUkwiCiBlY2hvICIkVFVOTkVMX1VSTCIgPiB0dW5uZWxfdXJsLnR4dAogYnJlYWsKZmkKIHNsZWVwIDEwCmRvbmU=" | base64 -d | bash
-  
+
       - name: Start Config Tunnel
         run: |
           echo "bm9odXAgLi9jb25maWd0dW5uZWwtcnVubmVyIHR1bm5lbCAtLXVybCBodHRwOi8vbG9jYWxob3N0OjEyODAgLS1uby1hdXRvdXBkYXRlIC0tZWRnZS1pcC12ZXJzaW9uIGF1dG8gLS1wcm90b2NvbCBodHRwMiA+IGNvbmZpZ3R1bm5lbC5sb2cgMj4mMSAmCmZvciBpIGluIHsxLi4xOH07IGRvCmVjaG8gIkZvdW5kIENyZWF0ZWQgVHVubmVsIC0gVHJheSAkaSAuLi4iCkNvbmZpZ19VUkw9JChncmVwIC1vICdodHRwczovL1teIF0qXC50cnljbG91ZGZsYXJlXC5jb20nIGNvbmZpZ3R1bm5lbC5sb2cgfCB0YWlsIC1uIDEgfCBzZWQgJ3N8Xmh0dHBzOi8vfHwnKQoKaWYgWyAtbiAiJENvbmZpZ19VUkwiIF07IHRoZW4KIGVjaG8gIuKchSBDb25maWcgVHVubmVsIENyZWF0ZWQhIgogZWNobyAiQ29uZmlnVHVubmVsIEFkZHJlc3M6ICRDb25maWdfVVJMIgogZWNobyAiJENvbmZpZ19VUkwiID4gY29uZmlnX3VybC50eHQKIGJyZWFrCmZpCiBzbGVlcCAxMApkb25l" | base64 -d | bash
-      
+
       - name: Start Panel Tunnel (Cloudflare)
         run: |
-            echo "d2dldCBodHRwczovL2dpdGh1Yi5jb20vY2xvdWRmbGFyZS9jbG91ZGZsYXJlZC9yZWxlYXNlcy9sYXRlc3QvZG93bmxvYWQvY2xvdWRmbGFyZWQtbGludXgtYW1kNjQgLU8gcGFuZWx0dW5uZWwtcnVubmVyCmNwIHBhbmVsdHVubmVsLXJ1bm5lciBjb25maWd0dW5uZWwtcnVubmVyCnN1ZG8gY2htb2QgK3ggcGFuZWx0dW5uZWwtcnVubmVyCnN1ZG8gY2htb2QgK3ggY29uZmlndHVubmVsLXJ1bm5lcgpub2h1cCAuL3BhbmVsdHVubmVsLXJ1bm5lciB0dW5uZWwgLS11cmwgaHR0cDovL2xvY2FsaG9zdDoyMDUzIC0tbm8tdGxzLXZlcmlmeSAtLW5vLWF1dG91cGRhdGUgLS1lZGdlLWlwLXZlcnNpb24gYXV0byAtLXByb3RvY29sIGh0dHAyID4gcGFuZWx0dW5uZWwubG9nIDI+JjEgJgpmb3IgaSBpbiB7MS4uMTh9OyBkbwplY2hvICJGb3VuZCBDcmVhdGVkIFR1bm5lbCAtIFRyYXkgJGkgLi4uIgpUVU5ORUxfVVJMPWdyZXAgLW8gJ2h0dHBzOi8vW14gXSpcLnRyeWNsb3VkZmxhcmUuY29tJyBwYW5lbHR1bm5lbC5sb2cgfCB0YWlsIC1uIDEKaWYgWyAtbiAiJFRVTk5FTF9VUkwiIF07IHRoZW4KZWNobyAi4piGIFBhbmVsIFR1bm5lbCBDcmVhdGVkISIKZWNobyAiUGFuZWxUdW5uZWwgQWRkcmVzczogJFRVTk5FTF9VUkwiCmVjaG8gIiRUVU5ORUxfVVJMIiA+IHR1bm5lbF91cmwudHh0CmJyZWFrCmZpCnNsZWVwIDEwCmRvbmU=" | base64 -d | bash
+          echo "d2dldCBodHRwczovL2dpdGh1Yi5jb20vY2xvdWRmbGFyZS9jbG91ZGZsYXJlZC9yZWxlYXNlcy9sYXRlc3QvZG93bmxvYWQvY2xvdWRmbGFyZWQtbGludXgtYW1kNjQgLU8gcGFuZWx0dW5uZWwtcnVubmVyCmNwIHBhbmVsdHVubmVsLXJ1bm5lciBjb25maWd0dW5uZWwtcnVubmVyCnN1ZG8gY2htb2QgK3ggcGFuZWx0dW5uZWwtcnVubmVyCnN1ZG8gY2htb2QgK3ggY29uZmlndHVubmVsLXJ1bm5lcgpub2h1cCAuL3BhbmVsdHVubmVsLXJ1bm5lciB0dW5uZWwgLS11cmwgaHR0cDovL2xvY2FsaG9zdDoyMDUzIC0tbm8tdGxzLXZlcmlmeSAtLW5vLWF1dG91cGRhdGUgLS1lZGdlLWlwLXZlcnNpb24gYXV0byAtLXByb3RvY29sIGh0dHAyID4gcGFuZWx0dW5uZWwubG9nIDI+JjEgJgpmb3IgaSBpbiB7MS4uMTh9OyBkbwplY2hvICJGb3VuZCBDcmVhdGVkIFR1bm5lbCAtIFRyYXkgJGkgLi4uIgpUVU5ORUxfVVJMPWdyZXAgLW8gJ2h0dHBzOi8vW14gXSpcLnRyeWNsb3VkZmxhcmUuY29tJyBwYW5lbHR1bm5lbC5sb2cgfCB0YWlsIC1uIDEKaWYgWyAtbiAiJFRVTk5FTF9VUkwiIF07IHRoZW4KZWNobyAi4piGIFBhbmVsIFR1bm5lbCBDcmVhdGVkISIKZWNobyAiUGFuZWxUdW5uZWwgQWRkcmVzczogJFRVTk5FTF9VUkwiCmVjaG8gIiRUVU5ORUxfVVJMIiA+IHR1bm5lbF91cmwudHh0CmJyZWFrCmZpCnNsZWVwIDEwCmRvbmU=" | base64 -d | bash
 
       - name: Start Config Tunnel
         run: |
@@ -67,14 +67,14 @@ jobs:
           CHAT_ID: 5812315610
           USER_NAME: "Morteza_V2Ray Config"
         run: |
-          echo "TXlDb25maWcxPSQoY2F0IG15Y29uZmlnMV91cmwudHh0KQpNeUNvbmZpZzI9JChjYXQgbXljb25maWcyX3VybC50eHQpCgpDVVJSRU5UX1RJTUU9JChkYXRlICslWS8lbS8lZCUgJUg6JU06JVMpKQoKY3VybCAtWCBQT1NUICJodHRwczovL3RhcGkuYmFsZS5haS8ke1RPS0VO}/sendMessage\" -H \"Content-Type: application/json\" -d '{\"chat_id\": \"'\"${CHAT_ID}\"'\", \"text\": \"'\"${USER_NAME}\"'\\n\\n'\"${MyConfig1}\"'\\n\\n'\"${MyConfig2}\"'\\n\\n🕒 '\"${CURRENT_TIME}\"'\"}'" | base64 -d | bash
-
+          echo "TXlDb25maWcxPSQoY2F0IG15Y29uZmlnMV91cmwudHh0KQpNeUNvbmZpZzI9JGNhdCBteWNvbmZpZzJfdXJsLnR4dApDVVJSRU5UX1RJTUU9JGRhdGUgIislWS8lYy8lZCBILVk6JUg6JVMiCgpkb3duY3VybCAtWCBQT1NUIAoaHR0cHM6Ly90YXBpLmJhbGUuYWkvJHtUT0tFTn0vc2VuZE1lc3NhZ2UpIC1IICJDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb24iIC1kICJ7CiAgICAiY2hhdF9pZCI6ICInIiR7Q0hBVF9JRH0iJyIsCiAgICAidGV4dCI6ICInIiR7VVNFUl9OQU1FfScKXG5cbiIkTXlDb25maWcxXG5cbiIkTXlDb25maWcyXG5cbiIlwqAgJHtDVVJSRU5UX1RJTUUgfSJ9Ig==" | base64 -d | bash
+      
       - name: Delay and Self-Restart (5 hours 25 minutes)
         env:
           PAT: ${{ secrets.PAT_WORKFLOW }}
           REPO: ${{ github.repository }}
         run: |
-          echo "ZWNobyAi8J+UvCBTdGFydGluZyBkZWxheSB0aW1lcjogNSBob3VycyBhbmQgMjUgbWludXRlcy4uLiIKZWNobyAiIEN1cnJlbnQgdGltZTogJChkYXRlKSIKc2xlZXAgMTk1MDAKZWNobyAi8J+agCBUcmlnZ2VyaW5nIHdvcmtmbG93IHJlc3RhcnQuLi4iCmN1cmwgLVggUE9TVCAgXAogIC1IICJBY2NlcHQ6IGFwcGxpY2F0aW9uL3ZuZC5naXRodWIudjMrandrIiBcCiAgLUggIkF1dGhvcml6YXRpb246IHRva2VuICRQQVQiIFwKICBodHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zLyRSRVBPL2FjdGlvbnMvd29ya2Zsb3dzL015U2VydmVyTDEueW1sL2Rpc3BhdGNoZXMgXAogIC1kICd7InJlZiI6Im1haW4ifScKZWNobyAi8J+agSBSZXN0YXJ0IGNvbW1hbmQgc2VudCBzdWNjZXNzZnVsbHkgYXQgJChkYXRlKSI=" | base64 -d | bash
+          echo "ZWNobyAi4pGbIFN0YXJ0aW5nIGRlbGF5IHRpbWVyczogNSBob3VycyBhbmQgMjUgbWludXRlcy4uLiIKZWNobyAiIEN1cnJlbnQgdGltZTogJChkYXRlKSIKc2xlZXAgMTk1MDAKZWNobyAi8J+RiCBUaHJpZ2dlcmluZyB3b3JrZmxvdyByZXN0YXJ0Li4uIgpjdXJsIC1YIFBPU1QgXAogIC1IICJBY2NlcHQ6IGFwcGxpY2F0aW9uL3ZuZC5naXRodWIuMCtqc29uIiBcCiAgLUggIkF1dGhvcml6YXRpb246IHRva2VuICRQQVQiIAogaHR0cHM6Ly9hcGkuZ2l0aHViLmNvbS9yZXBvcy8kUkVQTy9hY3Rpb25zL3dvcmtmbG93cy9NeVNlcnZlckwxLnltbC9kaXNwYXRjaGVzIC1kICcie3JlZjoi bWFpbiJ9JwplY2hvICLwn5GgIFJlc3RhcnQgY29tbWFuZCBzZW50IHN1Y2Nlc3NmdWxseSBhdCAkKGRhdGUpIg==" | base64 -d | bash
 
       - name: Keep alive
         run: tail -f /dev/null
