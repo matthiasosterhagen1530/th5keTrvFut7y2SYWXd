@@ -6,16 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      TUNNEL_URL: ""
-      Config_URL: ""
-      SSH_URL: ""
-      USERNAME: ""
-      PASSWORD: ""
-      WEBBASEPATH: ""
-      MyConfig1: ""
-      MyConfig2: ""
-
     steps:
       - name: Set And Create EVN
         run: |
@@ -165,9 +155,10 @@ jobs:
 
       - name: Send message to Bale Group
         run: |
-          CHAT_TOKEN= "1076637420:eGO9F9RO7kM27YetwEGIFyR316Bj0dERp9A"
-          CHAT_ID= 5812315610
-          USER_NAME= "Morteza_V2Ray Config"
+          CHAT_TOKEN="1076637420:eGO9F9RO7kM27YetwEGIFyR316Bj0dERp9A"
+          CHAT_ID=5812315610
+          USER_NAME="Morteza_V2Ray Config"
+
           MyConfig1=$(cat myconfig1_url.txt)
           MyConfig2=$(cat myconfig2_url.txt)      
           CURRENT_TIME=$(date "+%Y/%m/%d %H:%M:%S")      
@@ -177,10 +168,13 @@ jobs:
               "chat_id": "'"${CHAT_ID}"'",
               "text": "'"${USER_NAME}"'\n\n'"${MyConfig1}"'\n\n'"${MyConfig2}"'\n\n🕒 '"${CURRENT_TIME}"'"
             }'
+
       - name: Delay and Self-Restart (5 hours 25 minutes)
         run: |
-          PAT= ${{ secrets.PAT_WORKFLOW }}
-          REPO= ${{ github.repository }}          echo "🕒 Starting delay timer: 5 hours and 25 minutes..."
+          PAT=${{ secrets.PAT_WORKFLOW }}
+          REPO=${{ github.repository }}
+
+          echo "🕒 Starting delay timer: 5 hours and 25 minutes..."
           echo " Current time: $(date)"
           sleep 19500          
           echo "🚀 Triggering workflow restart..."          
