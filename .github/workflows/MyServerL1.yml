@@ -1,5 +1,5 @@
 name: Linux3ui-auto
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
 
       - name: Start Panel Tunnel
         run: |
-          echo "c3VkbyBiYXNoIC1jICdubyh1cCBzc2ggLXAgNDQzIC1vIFN0cmljdEhvc3RLZXlDaGVja2luZz1ubyAtbyBTZXJ2ZXJBbGl2ZUludGVydmFsPTMwIC1SMDoxMjcuMC4wLjE6MjIgdGNwQGFwLmZyZWUucGluZ2d5LmlvID4gc3NodHVubmVsLmxvZyAyPiYxICYnO2ZvciBpIGluIHsxLi4xOH07IGRvIGVjaG8gIkZvdW5kIFNTSCBUdW5uZWwgLSBUcmF5ICRpIC4uLiI7IFNTSF9VUkwiJChncmVwIC1vRSAidGNwOi8vW146c3BhY2VdKyIgc3NodHVubmVsLmxvZyB8IHRhaWwgLW4gMSB8IHNlZCAnc3x0Y3A6Ly98Jyk7IGlmIFsgLW4gIiRTU0hfVVJMIl07IHRoZW4gZWNobyAi4piGIFBhbmVsIFNTSCBDcmVhdGVkISIgJiYgZWNobyAiU1NIVHVubmVsIEFkZHJlc3M6ICRTU0hfVVJMIiAmJiBlY2hvICIkU1NIX1VSTCIgPiBzc2hfdXJsLnR4dDsgYnJlYWs7IGZpOyBzbGVlcCAxMDsgZG9uZQ==" | base64 -d | bash
+          echo "c3VkbyBiYXNoIC1jICdubyh1cCBzc2ggLXAgNDQzIC1vIFN0cmljdEhvc3RLZXlDaGVja2luZz1ubyAtbyBTZXJ2ZXJBbGl2ZUludGVydmFsPTMwIC1SMDoxMjcuMC4wLjE6MjIgdGNwQGFwLmZyZWUucGluZ2d5LmlvID4gc3NodHVubmVsLmxvZyAyPiYxICYnO2ZvciBpIGluIHsxLi4xOH07IGRvIGVjaG8gIkZvdW5kIFNTSCBUdW5uZWwgLSBUcmF5ICRpIC4uLiI7IFNTSF9VUkwiJChncmVwIC1vRSAidGNwOi8vW146c3BhY2VdKyIgc3NodHVubmVsLmxvZyB8IHRhaWwgLW4gMSB8IHNlZCAnc3x0Y3A6Ly98Jyk7IGlmIFsgLW4gIiRTU0hfVVJMIl07IHRoZW4gZWNobyAi4piGIFBhbmVsIFNTSCBDcmVhdGVkISIgJiYgZWNobyAiU1NIVHVubmVsIEFkZHJlc3M6ICRTU0hfVVJMIiAmJiBlY2hvICIkU1NIX1VSTCIgPiBzc2hfdXJsLnR4dDsgYnJlYWs7IGZpOyBzbGVlcCAxMDsgZG9uZSc=" | base64 -d | bash
 
       - name: Start Install Panel 3ui
         run: |
