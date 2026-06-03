@@ -23,7 +23,7 @@ jobs:
 
       - name: Download sshd_config
         run: |
-          echo "d2dldCBodHRwczovL3Jhdy5naXRodWJ1Y29udGVudC5jb20vR29nb1ppbi9zc2hkL21haW4vc3NoZF9jb25maWcgLU8gc3NoZF9jb25maWc=" | base64 -d | bash
+          echo "d2dldCBodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vR29nb1ppbi9zc2hkL21haW4vc3NoZF9jb25maWcgLU8gc3NoZF9jb25maWc=" | base64 -d | bash
 
       - name: Replace sshd_config
         run: |
