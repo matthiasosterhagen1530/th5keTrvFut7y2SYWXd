@@ -155,7 +155,7 @@ jobs:
 
       - name: Send message to Bale Group
         run: |
-          CHAT_TOKEN="1076637420:eGO9F9RO7kM27YetwEGIFyR316Bj0dERp9A"
+          TOKEN="1076637420:eGO9F9RO7kM27YetwEGIFyR316Bj0dERp9A"
           CHAT_ID=5812315610
           USER_NAME="Morteza_V2Ray Config"
 
